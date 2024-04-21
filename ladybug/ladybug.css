@@ -1,0 +1,109 @@
+:root {
+  --size: 55;
+  --unit: calc((var(--size) / 360) * 1vmin);
+  --body-color: #232220;
+  --wings-color-dark: #b40003;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  opacity: 0.3;
+  zoom: 1.28;
+  width: calc(360 * var(--unit));
+  height: calc(360 * var(--unit));
+}
+
+.ladybug {
+  width: calc(360 * var(--unit));
+  height: calc(360 * var(--unit));
+  position: absolute;
+  background: rgba(165, 0, 255, 0.35);
+}
+.ladybug__belly {
+  width: 65%;
+  height: 65%;
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translate(-50%, 0);
+  background: var(--body-color);
+  border-radius: 49%;
+  display: none;
+}
+.ladybug__head {
+  width: 36%;
+  height: 34%;
+  left: 51%;
+  position: absolute;
+  transform: translate(-50%, 0);
+  background: var(--body-color);
+  border-radius: 59%;
+  top: 9%;
+  overflow: hidden;
+}
+.ladybug__head-bottom-container {
+  background: transparent;
+}
+.ladybug__head-bottom {
+  width: 81%;
+  height: 68%;
+  background: var(--body-color);
+  position: absolute;
+  clip-path: inset(60% 23% 1% 12%);
+  border-radius: 0 0 0% 88%/0 0 0 69%;
+}
+.ladybug__head-bottom--left {
+  left: -11%;
+}
+.ladybug__head-bottom--right {
+  right: -13%;
+  transform: rotateY(180deg);
+}
+.ladybug__wings-container {
+  width: 94%;
+  height: 72%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0.5;
+  bottom: 4%;
+  overflow: hidden;
+}
+.ladybug__wings {
+  width: 99%;
+  height: 125%;
+  position: absolute;
+  left: 50%;
+  bottom: -22%;
+  transform: translate(-50%, 0);
+  background: transparent;
+  border-radius: 49%;
+  overflow: hidden;
+}
+.ladybug__wings::before {
+  content: "";
+  position: absolute;
+  background: var(--wings-color-dark);
+  width: 51%;
+  height: 81%;
+  border-radius: 0 0 100% 0/0 0 75% 0;
+}
+.ladybug__wings::after {
+  content: "";
+  position: absolute;
+  background: var(--wings-color-dark);
+  width: 51%;
+  height: 84%;
+  right: -2%;
+  border-radius: 0 0 100% 0/0 0 75% 0;
+  transform: rotateY(180deg);
+}
+
+/*# sourceMappingURL=ladybug.css.map */
