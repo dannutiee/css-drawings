@@ -1,10 +1,16 @@
 :root {
     --size: 55;
-    --unit: calc((var(--size) / 360) * 1vmin);
-    --body-color: #232220;
-    --wings-color-dark: #b40003;
-    --blush-color: rgb(255 255 255 / 19%);
+    --unit: calc((var(--size) / 360) * 1vmin); 
 
+    --body: #232220;
+    --wings: #b40003;
+    --blush: rgb(255 255 255 / 19%);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
 body {
@@ -13,36 +19,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-}
-
-
-img {
-    opacity: 0;
-    transform: rotate(-1deg);
-    zoom: 1.28;
-    width: calc(360 * var(--unit));
-    height: calc(360 * var(--unit));
+    background-image: linear-gradient(to top, #188bec 0%, #9ccdb4 100%);
 }
 
 .ladybug {
-    width: calc(360 * var(--unit));
+    width: calc(360 * #{var(--unit)});
     height: calc(360 * var(--unit));
     position: absolute;
-    //background: rgb(165 0 255 / 35%);
 
     &__tentacle {
-        width: calc(50* var(--unit));
-        height: calc(71* var(--unit));
+        width: calc(50 * var(--unit));
+        height: calc(71 * var(--unit));
         background: transparent;
-        border: calc(5* var(--unit)) solid var(--body-color);
+        border: calc(5* var(--unit)) solid var(--body);
         border-radius: 50%;
         top: 3%;
         position: absolute;
         clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0 100%);
 
         &--right {
-            transform: rotateY(180deg);
             transform: rotate(45deg) rotateY(180deg);
             right: 26%;
         }
@@ -56,52 +51,48 @@ img {
             width: calc(20* var(--unit));
             height: calc(20* var(--unit));
             border-radius: 50%;
-            background-color: var(--body-color);
+            background-color: var(--body);
             position: absolute;
-         
             top: 2%;
 
             &--right {
                 right: 31%;
                 top: 2%;
             }
-    
+
             &--left {
                 left: 33%;
             }
-
-
         }
     }
 
     &__leg {
         width: calc(20* var(--unit));
         height: calc(40* var(--unit));
-        background-color: var(--body-color);
+        background-color: var(--body);
         border-radius: 40% 40% 0 0;
         position: absolute;
-       
-      
-        &--first {
+
+        &:nth-child(1) {
             left: 0;
             transform: rotate(-35deg);
             top: -10%;
         }
 
-        &--second {
+        &:nth-child(2) {
             transform: rotate(35deg) rotateY(180deg);
             right: -2%;
             top: -9%;
             top: -10%;
         }
 
-        &--third {
+        &:nth-child(3) {
             transform: rotate(180deg);
             bottom: 0%;
             left: 17%;
         }
 
-        &--fourth {
+        &:nth-child(4) {
             transform: rotate(180deg);
             bottom: 0%;
             right: 17%;
@@ -115,9 +106,8 @@ img {
         left: 50%;
         bottom: 3%;
         transform: translate(-50%, 0);
-        background: var(--body-color);
+        background: var(--body);
         border-radius: 49%;
-        // display: none;
     }
 
     &__eyes {
@@ -126,7 +116,6 @@ img {
         top: 18%;
         left: 18%;
         position: absolute;
-        // opacity: 1.5;
     }
 
     &__eye {
@@ -136,46 +125,54 @@ img {
         background-color: #fdffff;
         position: absolute;
 
-        &--right {
-            right: 0;
-        }
-
         &--left {
             left: 0;
         }
 
-        &--inner {
+        &--right {
+            right: 0;
+        }
+
+        &-inner {
             width: 65%;
             height: 65%;
-            background-color:   var(--body-color);
-            // opacity: 0.5;
+            background-color: var(--body);
             position: absolute;
             border-radius: 50%;
             left: 20%;
             top: 20%;
 
-            &::after {
+            &::after,
+            &::before {
                 content: "";
-                width: 50%;
-                height: 50%;
                 border-radius: 50%;
                 background-color: white;
                 position: absolute;
-                left: -10%;
+            }
+
+            &::after {
+                width: 50%;
+                height: 50%;
+
             }
 
             &::before {
-                content: "";
                 width: 30%;
                 height: 30%;
-                border-radius: 50%;
-                background-color: white;
-                position: absolute;
-                right: -10%;
-                top: 45%;
             }
 
-            &-right {
+            &--left {
+                &::before {
+                    right: -15%;
+                    top: 45%;
+                }
+
+                &::after {
+                    left: -10%;
+                }
+            }
+
+            &--right {
                 &::before {
                     left: -18%;
                     top: 48%;
@@ -186,12 +183,8 @@ img {
                     top: 5%;
                 }
             }
-
         }
-
-
     }
-
 
     &__head {
         width: 36%;
@@ -199,11 +192,10 @@ img {
         left: 51%;
         position: absolute;
         transform: translate(-50%, 0);
-        background: var(--body-color);
+        background: var(--body);
         border-radius: 59%;
         top: 9%;
         overflow: hidden;
-        // opacity: 0.5;
 
         &-bottom-container {
             background: transparent;
@@ -212,7 +204,7 @@ img {
         &-bottom {
             width: 81%;
             height: 68%;
-            background: var(--body-color);
+            background: var(--body);
             position: absolute;
             clip-path: inset(60% 23% 1% 12%);
             border-radius: 0 0 0% 88% / 0 0 0 69%;
@@ -226,8 +218,6 @@ img {
                 transform: rotateY(180deg);
             }
         }
-
-
     }
 
     &__wings-container {
@@ -236,7 +226,6 @@ img {
         position: absolute;
         left: 50%;
         transform: translate(-50%, 0);
-        // opacity: 0.5;
         bottom: 4%;
         overflow: hidden;
     }
@@ -255,7 +244,7 @@ img {
 
     &__wing {
         position: absolute;
-        background: var(--wings-color-dark);
+        background: var(--wings);
         width: 51%;
         border-radius: 0 0 100% 0 / 0 0 75% 0;
 
@@ -263,7 +252,7 @@ img {
             height: 81%;
         }
 
-        &--right{
+        &--right {
             height: 84%;
             right: -2%;
             transform: rotateY(180deg);
@@ -273,7 +262,7 @@ img {
             width: 70%;
             top: 2%;
             height: 73%;
-            background-color: var(--blush-color);
+            background-color: var(--blush);
             position: absolute;
             left: 7%;
             border-radius: 50% 45% 50% 50% / 50% 50% 45% 56%;
@@ -283,37 +272,36 @@ img {
             }
 
             &--right {
-                transform:  rotate(26deg) rotateY(180deg);
+                transform: rotate(26deg) rotateY(180deg);
 
             }
         }
     }
 
     &__dot {
-        background-color: var(--body-color);
+        background-color: var(--body);
         border-radius: 50%;
-        &--first {
+        position: absolute;
+
+        &:nth-child(1) {
             width: calc(60* var(--unit));
             height: calc(60* var(--unit));
             left: 18%;
-            position: absolute;
             top: 30%;
         }
-        &--second {
+
+        &:nth-child(2) {
             width: calc(40* var(--unit));
             height: calc(40* var(--unit));
             left: 31%;
-            position: absolute;
             top: 62%;
         }
-        &--third {
+
+        &:nth-child(3) {
             width: calc(40* var(--unit));
             height: calc(40* var(--unit));
             left: 62%;
-            position: absolute;
             top: 20%;
         }
     }
-
-
 }

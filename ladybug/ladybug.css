@@ -1,9 +1,15 @@
 :root {
   --size: 55;
   --unit: calc((var(--size) / 360) * 1vmin);
-  --body-color: #232220;
-  --wings-color-dark: #b40003;
-  --blush-color: rgb(255 255 255 / 19%);
+  --body: #232220;
+  --wings: #b40003;
+  --blush: rgb(255 255 255 / 19%);
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 body {
@@ -12,14 +18,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-img {
-  opacity: 0;
-  transform: rotate(-1deg);
-  zoom: 1.28;
-  width: calc(360 * var(--unit));
-  height: calc(360 * var(--unit));
+  background-image: linear-gradient(to top, #188bec 0%, #9ccdb4 100%);
 }
 
 .ladybug {
@@ -31,14 +30,13 @@ img {
   width: calc(50 * var(--unit));
   height: calc(71 * var(--unit));
   background: transparent;
-  border: calc(5 * var(--unit)) solid var(--body-color);
+  border: calc(5 * var(--unit)) solid var(--body);
   border-radius: 50%;
   top: 3%;
   position: absolute;
   clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0 100%);
 }
 .ladybug__tentacle--right {
-  transform: rotateY(180deg);
   transform: rotate(45deg) rotateY(180deg);
   right: 26%;
 }
@@ -50,7 +48,7 @@ img {
   width: calc(20 * var(--unit));
   height: calc(20 * var(--unit));
   border-radius: 50%;
-  background-color: var(--body-color);
+  background-color: var(--body);
   position: absolute;
   top: 2%;
 }
@@ -64,27 +62,27 @@ img {
 .ladybug__leg {
   width: calc(20 * var(--unit));
   height: calc(40 * var(--unit));
-  background-color: var(--body-color);
+  background-color: var(--body);
   border-radius: 40% 40% 0 0;
   position: absolute;
 }
-.ladybug__leg--first {
+.ladybug__leg:nth-child(1) {
   left: 0;
   transform: rotate(-35deg);
   top: -10%;
 }
-.ladybug__leg--second {
+.ladybug__leg:nth-child(2) {
   transform: rotate(35deg) rotateY(180deg);
   right: -2%;
   top: -9%;
   top: -10%;
 }
-.ladybug__leg--third {
+.ladybug__leg:nth-child(3) {
   transform: rotate(180deg);
   bottom: 0%;
   left: 17%;
 }
-.ladybug__leg--fourth {
+.ladybug__leg:nth-child(4) {
   transform: rotate(180deg);
   bottom: 0%;
   right: 17%;
@@ -96,7 +94,7 @@ img {
   left: 50%;
   bottom: 3%;
   transform: translate(-50%, 0);
-  background: var(--body-color);
+  background: var(--body);
   border-radius: 49%;
 }
 .ladybug__eyes {
@@ -113,45 +111,47 @@ img {
   background-color: #fdffff;
   position: absolute;
 }
-.ladybug__eye--right {
-  right: 0;
-}
 .ladybug__eye--left {
   left: 0;
 }
-.ladybug__eye--inner {
+.ladybug__eye--right {
+  right: 0;
+}
+.ladybug__eye-inner {
   width: 65%;
   height: 65%;
-  background-color: var(--body-color);
+  background-color: var(--body);
   position: absolute;
   border-radius: 50%;
   left: 20%;
   top: 20%;
 }
-.ladybug__eye--inner::after {
+.ladybug__eye-inner::after, .ladybug__eye-inner::before {
   content: "";
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+}
+.ladybug__eye-inner::after {
   width: 50%;
   height: 50%;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-  left: -10%;
 }
-.ladybug__eye--inner::before {
-  content: "";
+.ladybug__eye-inner::before {
   width: 30%;
   height: 30%;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-  right: -10%;
+}
+.ladybug__eye-inner--left::before {
+  right: -15%;
   top: 45%;
 }
-.ladybug__eye--inner-right::before {
+.ladybug__eye-inner--left::after {
+  left: -10%;
+}
+.ladybug__eye-inner--right::before {
   left: -18%;
   top: 48%;
 }
-.ladybug__eye--inner-right::after {
+.ladybug__eye-inner--right::after {
   left: 54%;
   top: 5%;
 }
@@ -161,7 +161,7 @@ img {
   left: 51%;
   position: absolute;
   transform: translate(-50%, 0);
-  background: var(--body-color);
+  background: var(--body);
   border-radius: 59%;
   top: 9%;
   overflow: hidden;
@@ -172,7 +172,7 @@ img {
 .ladybug__head-bottom {
   width: 81%;
   height: 68%;
-  background: var(--body-color);
+  background: var(--body);
   position: absolute;
   clip-path: inset(60% 23% 1% 12%);
   border-radius: 0 0 0% 88%/0 0 0 69%;
@@ -206,7 +206,7 @@ img {
 }
 .ladybug__wing {
   position: absolute;
-  background: var(--wings-color-dark);
+  background: var(--wings);
   width: 51%;
   border-radius: 0 0 100% 0/0 0 75% 0;
 }
@@ -222,7 +222,7 @@ img {
   width: 70%;
   top: 2%;
   height: 73%;
-  background-color: var(--blush-color);
+  background-color: var(--blush);
   position: absolute;
   left: 7%;
   border-radius: 50% 45% 50% 50%/50% 50% 45% 56%;
@@ -234,28 +234,26 @@ img {
   transform: rotate(26deg) rotateY(180deg);
 }
 .ladybug__dot {
-  background-color: var(--body-color);
+  background-color: var(--body);
   border-radius: 50%;
+  position: absolute;
 }
-.ladybug__dot--first {
+.ladybug__dot:nth-child(1) {
   width: calc(60 * var(--unit));
   height: calc(60 * var(--unit));
   left: 18%;
-  position: absolute;
   top: 30%;
 }
-.ladybug__dot--second {
+.ladybug__dot:nth-child(2) {
   width: calc(40 * var(--unit));
   height: calc(40 * var(--unit));
   left: 31%;
-  position: absolute;
   top: 62%;
 }
-.ladybug__dot--third {
+.ladybug__dot:nth-child(3) {
   width: calc(40 * var(--unit));
   height: calc(40 * var(--unit));
   left: 62%;
-  position: absolute;
   top: 20%;
 }
 
