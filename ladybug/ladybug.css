@@ -3,6 +3,7 @@
   --unit: calc((var(--size) / 360) * 1vmin);
   --body-color: #232220;
   --wings-color-dark: #b40003;
+  --blush-color: rgb(255 255 255 / 19%);
 }
 
 body {
@@ -14,7 +15,8 @@ body {
 }
 
 img {
-  opacity: 0.3;
+  opacity: 0;
+  transform: rotate(-1deg);
   zoom: 1.28;
   width: calc(360 * var(--unit));
   height: calc(360 * var(--unit));
@@ -24,7 +26,68 @@ img {
   width: calc(360 * var(--unit));
   height: calc(360 * var(--unit));
   position: absolute;
-  background: rgba(165, 0, 255, 0.35);
+}
+.ladybug__tentacle {
+  width: calc(50 * var(--unit));
+  height: calc(71 * var(--unit));
+  background: transparent;
+  border: calc(5 * var(--unit)) solid var(--body-color);
+  border-radius: 50%;
+  top: 3%;
+  position: absolute;
+  clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0 100%);
+}
+.ladybug__tentacle--right {
+  transform: rotateY(180deg);
+  transform: rotate(45deg) rotateY(180deg);
+  right: 26%;
+}
+.ladybug__tentacle--left {
+  transform: rotate(-45deg);
+  left: 29%;
+}
+.ladybug__tentacle-ball {
+  width: calc(20 * var(--unit));
+  height: calc(20 * var(--unit));
+  border-radius: 50%;
+  background-color: var(--body-color);
+  position: absolute;
+  top: 2%;
+}
+.ladybug__tentacle-ball--right {
+  right: 31%;
+  top: 2%;
+}
+.ladybug__tentacle-ball--left {
+  left: 33%;
+}
+.ladybug__leg {
+  width: calc(20 * var(--unit));
+  height: calc(40 * var(--unit));
+  background-color: var(--body-color);
+  border-radius: 40% 40% 0 0;
+  position: absolute;
+}
+.ladybug__leg--first {
+  left: 0;
+  transform: rotate(-35deg);
+  top: -10%;
+}
+.ladybug__leg--second {
+  transform: rotate(35deg) rotateY(180deg);
+  right: -2%;
+  top: -9%;
+  top: -10%;
+}
+.ladybug__leg--third {
+  transform: rotate(180deg);
+  bottom: 0%;
+  left: 17%;
+}
+.ladybug__leg--fourth {
+  transform: rotate(180deg);
+  bottom: 0%;
+  right: 17%;
 }
 .ladybug__belly {
   width: 65%;
@@ -35,7 +98,62 @@ img {
   transform: translate(-50%, 0);
   background: var(--body-color);
   border-radius: 49%;
-  display: none;
+}
+.ladybug__eyes {
+  width: 65%;
+  height: 33%;
+  top: 18%;
+  left: 18%;
+  position: absolute;
+}
+.ladybug__eye {
+  width: calc(37 * var(--unit));
+  height: calc(37 * var(--unit));
+  border-radius: 50%;
+  background-color: #fdffff;
+  position: absolute;
+}
+.ladybug__eye--right {
+  right: 0;
+}
+.ladybug__eye--left {
+  left: 0;
+}
+.ladybug__eye--inner {
+  width: 65%;
+  height: 65%;
+  background-color: var(--body-color);
+  position: absolute;
+  border-radius: 50%;
+  left: 20%;
+  top: 20%;
+}
+.ladybug__eye--inner::after {
+  content: "";
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  left: -10%;
+}
+.ladybug__eye--inner::before {
+  content: "";
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  right: -10%;
+  top: 45%;
+}
+.ladybug__eye--inner-right::before {
+  left: -18%;
+  top: 48%;
+}
+.ladybug__eye--inner-right::after {
+  left: 54%;
+  top: 5%;
 }
 .ladybug__head {
   width: 36%;
@@ -72,7 +190,6 @@ img {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
-  opacity: 0.5;
   bottom: 4%;
   overflow: hidden;
 }
@@ -87,23 +204,59 @@ img {
   border-radius: 49%;
   overflow: hidden;
 }
-.ladybug__wings::before {
-  content: "";
+.ladybug__wing {
   position: absolute;
   background: var(--wings-color-dark);
   width: 51%;
-  height: 81%;
   border-radius: 0 0 100% 0/0 0 75% 0;
 }
-.ladybug__wings::after {
-  content: "";
-  position: absolute;
-  background: var(--wings-color-dark);
-  width: 51%;
+.ladybug__wing--left {
+  height: 81%;
+}
+.ladybug__wing--right {
   height: 84%;
   right: -2%;
-  border-radius: 0 0 100% 0/0 0 75% 0;
   transform: rotateY(180deg);
+}
+.ladybug__wing-blush {
+  width: 70%;
+  top: 2%;
+  height: 73%;
+  background-color: var(--blush-color);
+  position: absolute;
+  left: 7%;
+  border-radius: 50% 45% 50% 50%/50% 50% 45% 56%;
+}
+.ladybug__wing-blush--left {
+  transform: rotate(26deg);
+}
+.ladybug__wing-blush--right {
+  transform: rotate(26deg) rotateY(180deg);
+}
+.ladybug__dot {
+  background-color: var(--body-color);
+  border-radius: 50%;
+}
+.ladybug__dot--first {
+  width: calc(60 * var(--unit));
+  height: calc(60 * var(--unit));
+  left: 18%;
+  position: absolute;
+  top: 30%;
+}
+.ladybug__dot--second {
+  width: calc(40 * var(--unit));
+  height: calc(40 * var(--unit));
+  left: 31%;
+  position: absolute;
+  top: 62%;
+}
+.ladybug__dot--third {
+  width: calc(40 * var(--unit));
+  height: calc(40 * var(--unit));
+  left: 62%;
+  position: absolute;
+  top: 20%;
 }
 
 /*# sourceMappingURL=ladybug.css.map */
