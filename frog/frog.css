@@ -1,6 +1,14 @@
 :root {
-  --size: 50;
+  --size: 70;
   --unit: calc((var(--size) / 360) * 1vmin);
+  --background: #ffc0d3;
+  --belly: #fff;
+  --eyeOutside: #fff;
+  --eyeDot: #fff;
+  --eyeInside: #000;
+  --bellyInside: #cddc39;
+  --skin: #37bb83;
+  --floor: #663407;
 }
 
 * {
@@ -15,18 +23,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffc0d3;
+  background-color: var(--background);
 }
 
 .frog {
   width: calc(360 * var(--unit));
   height: calc(270 * var(--unit));
   position: absolute;
-}
-.frog img {
-  position: absolute;
-  width: 360px;
-  opacity: 0;
 }
 .frog__body {
   width: 63%;
@@ -38,13 +41,16 @@ body {
 .frog__belly {
   width: 50%;
   height: 72%;
-  background-color: #CDDC39;
+  background-color: var(--bellyInside);
   position: absolute;
   bottom: 0;
-  left: 25%;
+  left: 50%;
+  transform: translate(-50%);
   display: flex;
   justify-content: center;
   border-radius: 60% 60% 5% 5%/66% 66% 50% 50%;
+  animation: fullBelly 4s infinite;
+  animation-timing-function: cubic-bezier(0, 0.69, 0, 1.03);
 }
 .frog__belly::after {
   content: "";
@@ -52,19 +58,19 @@ body {
   height: 90%;
   border-radius: 50%;
   opacity: 0.3;
-  background-color: white;
+  background-color: var(--belly);
   position: absolute;
 }
 .frog__eye {
   position: absolute;
   width: calc(42 * var(--unit));
   height: calc(42 * var(--unit));
-  background-color: white;
+  background-color: var(--eyeOutside);
   border-radius: 50%;
   left: 22%;
   top: 1%;
-  border: calc(8 * var(--unit)) solid #37bb83;
-  box-shadow: calc(85 * var(--unit)) 0px 0 calc(-7 * var(--unit)) white, calc(85 * var(--unit)) 0px 0 0 #37bb83;
+  border: calc(8 * var(--unit)) solid var(--skin);
+  box-shadow: calc(85 * var(--unit)) 0px 0 calc(-7 * var(--unit)) white, calc(85 * var(--unit)) 0px 0 0 var(--skin);
 }
 .frog__eye::after {
   content: "";
@@ -74,8 +80,10 @@ body {
   left: 9%;
   top: 2%;
   border-radius: 50%;
-  background: black;
-  box-shadow: calc(85 * var(--unit)) 0px 0 0 black;
+  background: var(--eyeInside);
+  box-shadow: calc(85 * var(--unit)) 0px 0 0 var(--eyeInside);
+  animation: eyeRollOutside 4s infinite;
+  animation-fill-mode: both;
 }
 .frog__eye::before {
   content: "";
@@ -87,12 +95,13 @@ body {
   left: 25%;
   z-index: 1;
   top: 9%;
-  box-shadow: calc(85 * var(--unit)) 0px 0 0 white;
+  box-shadow: calc(85 * var(--unit)) 0px 0 0 var(--eyeDot);
+  animation: eyeRollInside 4s infinite;
 }
 .frog__head {
   width: 50%;
   height: 51%;
-  background-color: #37bb83;
+  background-color: var(--skin);
   position: absolute;
   left: 25%;
   top: 5%;
@@ -102,7 +111,7 @@ body {
   width: 26%;
   height: 54%;
   position: absolute;
-  background: #37bb83;
+  background: var(--skin);
   bottom: 4%;
   border-radius: 4% 100% 18% 83%/18% 82% 0% 83%;
 }
@@ -116,7 +125,7 @@ body {
 .frog__foot {
   width: 25%;
   height: 5%;
-  background: #37bb83;
+  background: var(--skin);
   position: absolute;
   bottom: 0;
 }
@@ -126,7 +135,7 @@ body {
   height: calc(19 * var(--unit));
   position: absolute;
   border-radius: 46% 46% 0% 0%/56% 52% 10% 10%;
-  background: #37bb83;
+  background: var(--skin);
   bottom: -50%;
   left: -25%;
 }
@@ -141,11 +150,54 @@ body {
 .frog__floor {
   height: 3%;
   width: 95%;
-  background: #663407;
+  background: var(--floor);
   position: absolute;
   bottom: 21%;
   left: 2%;
   border-radius: 50%;
+}
+
+@keyframes eyeRollInside {
+  0%, 100% {
+    left: 25%;
+    top: 9%;
+    transform: translate(0, 0);
+  }
+  35% {
+    left: 65%;
+    top: 9%;
+    transform: translate(0, 0);
+  }
+  60%, 80% {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes eyeRollOutside {
+  0%, 100% {
+    left: 9%;
+    top: 2%;
+    transform: translate(0, 0);
+  }
+  35% {
+    left: 23%;
+    top: 2%;
+    transform: translate(0, 0);
+  }
+  60%, 80% {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes fullBelly {
+  0%, 35%, 70%, 85% {
+    width: 50%;
+  }
+  80% {
+    width: 65%;
+  }
 }
 
 /*# sourceMappingURL=frog.css.map */
