@@ -1,15 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="normalize.css" />
-    <title>CSS Drawings</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="normalize.css" />
+  <title>CSS Drawings</title>
+</head>
+<style>
+  body {
+    height: 100vh;
+    background-image: linear-gradient(to top,
+        #fdcbf1 0%,
+        #fdcbf1 1%,
+        #e6dee9 100%);
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin: 10px 20px;
+      font-weight: 700;
+    }
+
+    a {
+      display: block;
+      width: fit-content;
+      margin: 10px 20px;
+      text-decoration: none;
+      color: #4c4c4c;
+      font-family: Arial, Helvetica, sans-serif;
+
+      &:hover {
+        color: purple;
+      }
+    }
+  }
+</style>
+
+<body>
+  <div class="list">
+    <p>My CSS drawings</p>
+    <a href="/ladybug">01_Ladybug</a>
+    <a href="/frog">02_Frog</a>
+  </div>
+  <div class="list">
+    <p>In progress or based on tutorial</p>
     <a href="/coffee">Coffee</a>
     <a href="/blob">Blob</a>
     <a href="/egghead">Egghead</a>
-    <a href="/ladybug">Ladybug</a>
-  </body>
+  </div>
+</body>
+
 </html>
