@@ -3,10 +3,10 @@
     --unit: calc((var(--size) / 360) * 1vmin);
     --background: #ffc0d3;
     --belly: #fff;
-    --eyeOutside: #fff;
-    --eyeDot: #fff;
-    --eyeInside: #000;
-    --bellyInside: #cddc39;
+    --eye-outside: #fff;
+    --eye-dot: #fff;
+    --eye-inside: #000;
+    --belly-inside: #cddc39;
     --skin: #37bb83;
     --floor: #663407;
 }
@@ -42,7 +42,7 @@ body {
     &__belly {
         width: 50%;
         height: 72%;
-        background-color: var(--bellyInside);
+        background-color: var(--belly-inside);
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -68,12 +68,12 @@ body {
         position: absolute;
         width: calc(42* var(--unit));
         height: calc(42* var(--unit));
-        background-color: var(--eyeOutside);
+        background-color: var(--eye-outside);
         border-radius: 50%;
         left: 22%;
         top: 1%;
         border: calc(8* var(--unit)) solid var(--skin);
-        box-shadow: calc(85 * #{var(--unit)}) 0px 0 calc(-7 * #{var(--unit)}) white,
+        box-shadow: calc(85 * #{var(--unit)}) 0px 0 calc(-7 * #{var(--unit)}) var(--eye-outside),
         calc(85 * #{var(--unit)}) 0px 0 0 var(--skin);
 
         &::after {
@@ -84,10 +84,9 @@ body {
             left: 9%;
             top: 2%;
             border-radius: 50%;
-            background: var(--eyeInside);
-            box-shadow: calc(85 * #{var(--unit)}) 0px 0 0 var(--eyeInside);
+            background: var(--eye-inside);
+            box-shadow: calc(85 * #{var(--unit)}) 0 0 0 var(--eye-inside);
             animation: eyeRollOutside 4s infinite;
-            animation-fill-mode: both;
         }
 
         &::before {
@@ -100,7 +99,7 @@ body {
             left: 25%;
             z-index: 1;
             top: 9%;
-            box-shadow: calc(85 * #{var(--unit)}) 0px 0 0 var(--eyeDot);
+            box-shadow: calc(85 * #{var(--unit)}) 0 0 0 var(--eye-dot);
             animation: eyeRollInside 4s infinite;
         }
     }
