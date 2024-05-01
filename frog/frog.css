@@ -1,5 +1,5 @@
 :root {
-  --size: 70;
+  --size: 100;
   --unit: calc((var(--size) / 360) * 1vmin);
   --background: #ffc0d3;
   --belly: #fff;
