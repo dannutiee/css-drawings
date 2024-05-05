@@ -1,3 +1,8 @@
+:root {
+  --size: 80;
+  --unit: calc((var(--size) / 475) * 1vmin);
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -5,7 +10,7 @@
 }
 
 html {
-  font-size: 5vh;
+  font-size: 5vw;
 }
 @media screen and (min-height: 400px) {
   html {
@@ -23,8 +28,8 @@ body {
 }
 
 .banana {
-  width: 25rem;
-  height: 20rem;
+  width: calc(475 * var(--unit));
+  height: calc(380 * var(--unit));
   position: relative;
   display: flex;
   justify-content: center;
@@ -37,46 +42,47 @@ body {
   background-size: cover;
   position: absolute;
   opacity: 0;
-  opacity: 0.3;
 }
 .banana__shadow {
-  width: 50%;
+  width: 48%;
   height: 5%;
   position: absolute;
-  bottom: 10%;
-  left: 23%;
+  bottom: 7%;
+  left: 24%;
   background-color: #2a2a2a;
   opacity: 0.1;
   border-radius: 10% 10% 10% 10%/45% 45% 45% 45%;
+  animation: shadowMovw 5s infinite;
 }
 .banana__body {
   width: 50%;
   height: 38%;
   position: absolute;
   bottom: 12%;
-  border-bottom: 4rem solid #f4d555;
+  border-bottom: calc(73 * var(--unit)) solid #f4d555;
   left: 49%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0) rotate(45deg);
   border-radius: 0 0 48% 50%/0% 0% 100% 90%;
+  animation: exercise 5s infinite;
 }
 .banana__body::after {
   content: "";
-  width: 80%;
-  height: 90%;
+  width: 81%;
+  height: 85%;
   position: absolute;
-  left: 2%;
-  bottom: -2rem;
-  border-right: 1rem solid #f2bf56;
-  border-left: 1rem solid #f2bf56;
-  border-bottom: 2rem solid #f2bf56;
+  left: 0;
+  bottom: -45%;
+  border-right: calc(20 * var(--unit)) solid #f2bf56;
+  border-left: calc(20 * var(--unit)) solid #f2bf56;
+  border-bottom: calc(36 * var(--unit)) solid #f2bf56;
   border-radius: 0 0 50% 50%/0% 0% 100% 100%;
 }
 .banana__eyes {
   width: 10%;
   height: 12%;
   position: absolute;
-  left: 22%;
-  top: 104%;
+  left: 24%;
+  top: 100%;
   transform: rotate(-70deg);
   display: flex;
   justify-content: space-between;
@@ -84,47 +90,52 @@ body {
   z-index: 2;
 }
 .banana__eye {
-  width: 0.4rem;
-  height: 0.5rem;
+  width: calc(8 * var(--unit));
+  height: calc(9 * var(--unit));
   border-radius: 50%;
   background: #724020;
   animation: eyeBlink 2s infinite;
 }
 .banana__arm {
-  width: 9%;
-  height: 10%;
-  background: transparent;
+  width: 14%;
+  /* width: 0%; */
+  height: 80%;
+  border-right: calc(4 * var(--unit)) solid #724020;
+  border-bottom: calc(4 * var(--unit)) solid #724020;
   position: absolute;
-  bottom: 16%;
-  left: 42%;
-  border-radius: 0 40% 40% 0;
-  border-bottom: 0.2rem solid;
-  border-radius: 0 0 0 50%;
-  border-left: 0.2rem solid;
-  border-radius: 0 0 0 50%;
-  clip-path: polygon(0% 21%, 57% 47%, 3% 0, 130% 110%, 0 100%);
+  transform: rotate(40deg);
+  border-bottom-right-radius: 60%;
+  transform-origin: 50% 100%;
 }
 .banana__arm::after {
   content: "";
-  width: 13%;
-  height: 10%;
-  border-radius: 50%;
-  display: block;
-  background: black;
+  width: calc(4 * var(--unit));
+  height: calc(3 * var(--unit));
   border-radius: 50%;
   position: absolute;
-  bottom: -10%;
-  right: -5%;
+  background: #724020;
+  top: calc(-1 * var(--unit));
+  right: calc(-3.9 * var(--unit));
 }
-.banana__arm::before {
-  content: "";
-  width: 10%;
-  height: 10%;
-  display: block;
+.banana__arm--front {
+  z-index: 1;
+  bottom: -72%;
+  left: 29%;
+  animation: armStright, armShakeFront;
+  animation-duration: 5s, 5s;
+  animation-iteration-count: infinite, infinite;
+}
+.banana__arm--back {
+  z-index: -1;
+  left: 33%;
+  bottom: -17%;
+  animation: armStright, armShakeBack;
+  animation-duration: 5s, 5s;
+  animation-iteration-count: infinite, infinite;
 }
 .banana__edge {
-  width: 1.5rem;
-  height: 2rem;
+  width: 12%;
+  height: 50%;
   border-radius: 15% 15% 5% 5%;
   background: #724020;
   position: absolute;
@@ -132,7 +143,7 @@ body {
 }
 .banana__edge--left {
   left: -1%;
-  top: -2%;
+  top: 3%;
   transform: rotate(-15deg);
 }
 .banana__edge--right {
@@ -142,13 +153,77 @@ body {
 }
 
 @keyframes eyeBlink {
-  0%, 100% {
-    height: 0.5rem;
+  80% {
+    height: calc(8 * var(--unit));
     border-radius: 50%;
   }
-  20%, 80% {
-    height: 0.15rem;
+  0%, 20%, 100% {
+    height: calc(3 * var(--unit));
     border-radius: 0;
+  }
+}
+@keyframes exercise {
+  0%, 20%, 100% {
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+  40%, 70% {
+    transform: translate(-50%, 0) rotate(0deg);
+  }
+  25%, 90% {
+    transform: translate(-50%, 0) rotate(-20deg);
+  }
+}
+@keyframes armStright {
+  0%, 15%, 75%, 100% {
+    width: 0;
+    height: 100%;
+  }
+  50%, 70% {
+    width: 14%;
+    height: 80%;
+  }
+}
+@keyframes armShakeFront {
+  0%, 15%, 100% {
+    transform: rotate(40deg);
+    left: 29%;
+  }
+  55%, 65% {
+    transform: rotate(70deg);
+    left: 23%;
+  }
+  3%, 9% {
+    transform: rotate(60deg);
+    left: 29%;
+  }
+  6%, 12% {
+    transform: rotate(20deg);
+    left: 29%;
+  }
+}
+@keyframes armShakeBack {
+  0%, 15%, 100% {
+    transform: rotate(40deg);
+  }
+  55%, 65% {
+    transform: rotate(65deg);
+  }
+  3%, 9% {
+    transform: rotate(20deg);
+  }
+  6%, 12% {
+    transform: rotate(60deg);
+  }
+}
+@keyframes shadowMovw {
+  0%, 20%, 100% {
+    left: 35%;
+  }
+  40%, 70% {
+    left: 25%;
+  }
+  25%, 90% {
+    left: 15%;
   }
 }
 
