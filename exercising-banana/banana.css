@@ -1,5 +1,5 @@
 :root {
-  --size: 80;
+  --size: 120;
   --unit: calc((var(--size) / 475) * 1vmin);
   --yellow-dark: #f2bf56;
   --yellow-light: #f4d555;

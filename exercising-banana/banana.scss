@@ -1,5 +1,5 @@
 :root {
-    --size: 80;
+    --size: 120;
     --unit: calc((var(--size) / 475) * 1vmin);
     --yellow-dark: #f2bf56;
     --yellow-light: #f4d555;
@@ -64,7 +64,6 @@ body {
             border-left: calc(20 * var(--unit)) solid var(--yellow-dark);
             border-bottom: calc(36 * var(--unit)) solid var(--yellow-dark);
             border-radius: 0 0 50% 50% / 0% 0% 100% 100%;
-
         }
     }
 
@@ -90,6 +89,16 @@ body {
     }
 
     &__arm {
+
+        width: 14%;
+        height: 80%;
+        border-right: calc(4* var(--unit)) solid #724020;
+        border-bottom: calc(4* var(--unit)) solid #724020;
+        position: absolute;
+        transform: rotate(40deg);
+        border-bottom-right-radius: 60%;
+        transform-origin: 50% 100%;
+
         &::after {
             content: "";
             width: calc(4* var(--unit));
@@ -100,16 +109,6 @@ body {
             top: calc(-1* var(--unit));
             right: calc(-3.9* var(--unit));
         }
-
-        width: 14%;
-        height: 80%;
-        border-right: calc(4* var(--unit)) solid #724020;
-        border-bottom: calc(4* var(--unit)) solid #724020;
-        position: absolute;
-
-        transform: rotate(40deg);
-        border-bottom-right-radius: 60%;
-        transform-origin: 50% 100%;
 
         &--front {
             z-index: 1;
@@ -129,8 +128,6 @@ body {
             animation-iteration-count: infinite, infinite;
         }
     }
-
-
 
     &__edge {
         width: 12%;
