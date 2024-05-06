@@ -1,6 +1,11 @@
 :root {
   --size: 80;
   --unit: calc((var(--size) / 475) * 1vmin);
+  --yellow-dark: #f2bf56;
+  --yellow-light: #f4d555;
+  --brown: #724020;
+  --background: #f17cf0;
+  --shadow: #2a2a2a;
 }
 
 * {
@@ -9,22 +14,13 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 5vw;
-}
-@media screen and (min-height: 400px) {
-  html {
-    font-size: 19px;
-  }
-}
-
 body {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f17cf0;
+  background-color: var(--background);
 }
 
 .banana {
@@ -34,22 +30,13 @@ body {
   display: flex;
   justify-content: center;
 }
-.banana__img {
-  width: 100%;
-  height: 100%;
-  background-image: url("./banana.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  opacity: 0;
-}
 .banana__shadow {
   width: 48%;
   height: 5%;
   position: absolute;
   bottom: 7%;
   left: 24%;
-  background-color: #2a2a2a;
+  background-color: var(--shadow);
   opacity: 0.1;
   border-radius: 10% 10% 10% 10%/45% 45% 45% 45%;
   animation: shadowMovw 5s infinite;
@@ -59,7 +46,7 @@ body {
   height: 38%;
   position: absolute;
   bottom: 12%;
-  border-bottom: calc(73 * var(--unit)) solid #f4d555;
+  border-bottom: calc(73 * var(--unit)) solid var(--yellow-light);
   left: 49%;
   transform: translate(-50%, 0) rotate(45deg);
   border-radius: 0 0 48% 50%/0% 0% 100% 90%;
@@ -72,9 +59,9 @@ body {
   position: absolute;
   left: 0;
   bottom: -45%;
-  border-right: calc(20 * var(--unit)) solid #f2bf56;
-  border-left: calc(20 * var(--unit)) solid #f2bf56;
-  border-bottom: calc(36 * var(--unit)) solid #f2bf56;
+  border-right: calc(20 * var(--unit)) solid var(--yellow-dark);
+  border-left: calc(20 * var(--unit)) solid var(--yellow-dark);
+  border-bottom: calc(36 * var(--unit)) solid var(--yellow-dark);
   border-radius: 0 0 50% 50%/0% 0% 100% 100%;
 }
 .banana__eyes {
@@ -93,12 +80,11 @@ body {
   width: calc(8 * var(--unit));
   height: calc(9 * var(--unit));
   border-radius: 50%;
-  background: #724020;
+  background: var(--brown);
   animation: eyeBlink 2s infinite;
 }
 .banana__arm {
   width: 14%;
-  /* width: 0%; */
   height: 80%;
   border-right: calc(4 * var(--unit)) solid #724020;
   border-bottom: calc(4 * var(--unit)) solid #724020;
@@ -113,7 +99,7 @@ body {
   height: calc(3 * var(--unit));
   border-radius: 50%;
   position: absolute;
-  background: #724020;
+  background: var(--brown);
   top: calc(-1 * var(--unit));
   right: calc(-3.9 * var(--unit));
 }
@@ -137,7 +123,7 @@ body {
   width: 12%;
   height: 50%;
   border-radius: 15% 15% 5% 5%;
-  background: #724020;
+  background: var(--brown);
   position: absolute;
   z-index: 1;
 }

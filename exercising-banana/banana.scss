@@ -1,6 +1,11 @@
 :root {
     --size: 80;
     --unit: calc((var(--size) / 475) * 1vmin);
+    --yellow-dark: #f2bf56;
+    --yellow-light: #f4d555;
+    --brown: #724020;
+    --background: #f17cf0;
+    --shadow: #2a2a2a;
 }
 
 * {
@@ -9,43 +14,21 @@
     box-sizing: border-box;
 }
 
-html {
-	//Scaling drawing to fit on screen (thanks to rems)
-	font-size: 5vw;
-	@media screen and (min-height: 400px) {
-		// Avoiding really big versions of the illustration
-		font-size: 19px;
-	}
-}
-
 body {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f17cf0;
+    background-color: var(--background);
 }
 
 .banana {
     width: calc(475 * var(--unit));
     height: calc(380 * var(--unit));
-    // width: 25rem;
-    // height: 20rem;
     position: relative;
     display: flex;
     justify-content: center;
-
-    &__img {
-       width: 100%;
-       height: 100%;
-       background-image: url("./banana.png");
-       background-repeat: no-repeat;
-       background-size: cover;
-       position: absolute;
-       opacity: 0;
-      // opacity: .3;
-    }
 
     &__shadow {
         width: 48%;
@@ -53,7 +36,7 @@ body {
         position: absolute;
         bottom: 7%;
         left: 24%;
-        background-color: #2a2a2a;
+        background-color: var(--shadow);
         opacity: 0.1;
         border-radius: 10% 10% 10% 10% / 45% 45% 45% 45%;
         animation: shadowMovw 5s infinite;
@@ -63,9 +46,8 @@ body {
         width: 50%;
         height: 38%;
         position: absolute;
-       // opacity: 0.4;
         bottom: 12%;
-        border-bottom: calc(73 * var(--unit)) solid #f4d555;
+        border-bottom: calc(73 * var(--unit)) solid var(--yellow-light);
         left: 49%;
         transform: translate(-50%, 0) rotate(45deg);
         border-radius: 0 0 48% 50% / 0% 0% 100% 90%;
@@ -77,14 +59,12 @@ body {
             height: 85%;
             position: absolute;
             left: 0;
-           // opacity: 0.4;
             bottom: -45%;
-            border-right: calc(20 * var(--unit)) solid #f2bf56;
-            border-left:  calc(20 * var(--unit)) solid #f2bf56;
-            border-bottom:  calc(36 * var(--unit)) solid #f2bf56;
+            border-right: calc(20 * var(--unit)) solid var(--yellow-dark);
+            border-left: calc(20 * var(--unit)) solid var(--yellow-dark);
+            border-bottom: calc(36 * var(--unit)) solid var(--yellow-dark);
             border-radius: 0 0 50% 50% / 0% 0% 100% 100%;
-        
-        
+
         }
     }
 
@@ -102,12 +82,10 @@ body {
     }
 
     &__eye {
-        // height: 40%;
-        // width: 40%;
         width: calc(8 * var(--unit));
         height: calc(9 * var(--unit));
         border-radius: 50%;
-        background: #724020;
+        background: var(--brown);
         animation: eyeBlink 2s infinite;
     }
 
@@ -118,18 +96,17 @@ body {
             height: calc(3* var(--unit));
             border-radius: 50%;
             position: absolute;
-            background: #724020;
+            background: var(--brown);
             top: calc(-1* var(--unit));
             right: calc(-3.9* var(--unit));
         }
 
         width: 14%;
-        /* width: 0%; */
         height: 80%;
         border-right: calc(4* var(--unit)) solid #724020;
         border-bottom: calc(4* var(--unit)) solid #724020;
         position: absolute;
- 
+
         transform: rotate(40deg);
         border-bottom-right-radius: 60%;
         transform-origin: 50% 100%;
@@ -139,7 +116,7 @@ body {
             bottom: -72%;
             left: 29%;
             animation: armStright, armShakeFront;
-            animation-duration: 5s , 5s;
+            animation-duration: 5s, 5s;
             animation-iteration-count: infinite, infinite;
         }
 
@@ -148,7 +125,7 @@ body {
             left: 33%;
             bottom: -17%;
             animation: armStright, armShakeBack;
-            animation-duration: 5s , 5s;
+            animation-duration: 5s, 5s;
             animation-iteration-count: infinite, infinite;
         }
     }
@@ -159,10 +136,9 @@ body {
         width: 12%;
         height: 50%;
         border-radius: 15% 15% 5% 5%;
-        background: #724020;
+        background: var(--brown);
         position: absolute;
         z-index: 1;
-
 
         &--left {
             left: -1%;
@@ -185,94 +161,119 @@ body {
         border-radius: 50%;
     }
 
-    0%, 20%, 100% {
+    0%,
+    20%,
+    100% {
         height: calc(3 * var(--unit));
         border-radius: 0;
     }
 }
 
 @keyframes exercise {
-    0%, 20%, 100% {
+
+    0%,
+    20%,
+    100% {
         transform: translate(-50%, 0) rotate(45deg);
     }
 
-    40%, 70% {
+    40%,
+    70% {
         transform: translate(-50%, 0) rotate(0deg);
     }
 
-    25%, 90% {
+    25%,
+    90% {
         transform: translate(-50%, 0) rotate(-20deg);
     }
 }
 
 @keyframes armStright {
-    0%, 15%, 75%, 100% {
+
+    0%,
+    15%,
+    75%,
+    100% {
         width: 0;
         height: 100%;
-    } 
+    }
 
-    50%, 70% {
+    50%,
+    70% {
         width: 14%;
         height: 80%;
     }
 }
 
 @keyframes armShakeFront {
-    0% ,  15%, 100% {
+
+    0%,
+    15%,
+    100% {
         transform: rotate(40deg);
         left: 29%;
     }
 
-    55%, 65% {
+    55%,
+    65% {
         transform: rotate(70deg);
         left: 23%;
     }
 
 
-    3%,  9% {
+    3%,
+    9% {
         transform: rotate(60deg);
         left: 29%;
     }
 
-    6%,  12%{
+    6%,
+    12% {
         transform: rotate(20deg);
         left: 29%;
     }
 }
 
 @keyframes armShakeBack {
-    0% ,  15%, 100% {
+
+    0%,
+    15%,
+    100% {
         transform: rotate(40deg)
     }
 
-    55%, 65% {
+    55%,
+    65% {
         transform: rotate(65deg);
     }
 
-    3%, 9%{
+    3%,
+    9% {
         transform: rotate(20deg)
     }
-    
-     6%, 12% {
-        transform:  rotate(60deg)
-     }
+
+    6%,
+    12% {
+        transform: rotate(60deg)
+    }
 
 }
 
 @keyframes shadowMovw {
-    0%, 20%, 100% {
+
+    0%,
+    20%,
+    100% {
         left: 35%;
     }
 
-    40%, 70% {
+    40%,
+    70% {
         left: 25%;
     }
 
-    25%, 90% {
+    25%,
+    90% {
         left: 15%;
     }
-
-
 }
-
-
