@@ -92,8 +92,8 @@ body {
 
         width: 14%;
         height: 80%;
-        border-right: calc(4* var(--unit)) solid #724020;
-        border-bottom: calc(4* var(--unit)) solid #724020;
+        border-right: calc(4* var(--unit)) solid var(--brown);
+        border-bottom: calc(4* var(--unit)) solid var(--brown);
         position: absolute;
         transform: rotate(40deg);
         border-bottom-right-radius: 60%;
