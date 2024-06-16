@@ -1,9 +1,9 @@
 :root {
-    --size: 90;
+    --size: 70;
     --default-width: 450;
     --unit: calc((var(--size) / var(--default-width)) * 1vmin);
 
-    --background: linear-gradient(0deg, rgb(177 251 255), rgb(0 134 255 / 52%));
+    --background: #a5c9ff;
     --cat-body: #000;
     --balloon-one: #ec27d4;
     --balloon-two: #e2c721;

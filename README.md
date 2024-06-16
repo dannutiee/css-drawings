@@ -19,3 +19,9 @@ Welcome to My CSS Drawings! This repository is not just about showcasing a colle
 <a href="https://codepen.io/devdanutie/pen/mdgNgJX">See on codepen </a>
 
 <img src="./gallery/banana.gif" />
+
+### 4. Balloon cat
+
+<a href="https://codepen.io/devdanutie/pen/MWdrQMB">See on codepen </a>
+
+<img src="./gallery/balloon-cat.gif" />
