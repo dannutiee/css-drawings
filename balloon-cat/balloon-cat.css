@@ -1,5 +1,5 @@
 :root {
-  --size: 60;
+  --size: 90;
   --default-width: 450;
   --unit: calc((var(--size) / var(--default-width)) * 1vmin);
   --background: linear-gradient(0deg, rgb(177 251 255), rgb(0 134 255 / 52%));
