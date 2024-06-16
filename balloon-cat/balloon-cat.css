@@ -1,6 +1,14 @@
 :root {
   --size: 60;
-  --unit: calc((var(--size) / 430) * 1vmin);
+  --default-width: 450;
+  --unit: calc((var(--size) / var(--default-width)) * 1vmin);
+  --background: linear-gradient(0deg, rgb(177 251 255), rgb(0 134 255 / 52%));
+  --cat-body: #000;
+  --balloon-one: #ec27d4;
+  --balloon-two: #e2c721;
+  --balloon-three: #ff1111d1;
+  --balloon-four: #3b29e1;
+  --line: #ff00cd;
 }
 
 * {
@@ -14,28 +22,19 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background: linear-gradient(0deg, rgb(242, 232, 255), rgba(86, 0, 255, 0.52));
-}
-
-.cat-image {
-  background-image: url("./cat.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: calc(450 * var(--unit));
-  width: calc(430 * var(--unit));
-  opacity: 0;
-  position: fixed;
+  background: var(--background);
 }
 
 .cat-container {
-  height: calc(450 * var(--unit));
-  width: calc(430 * var(--unit));
+  height: calc(var(--default-width) * var(--unit));
+  width: calc(var(--default-width) * var(--unit));
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 50%;
+  transform: translate(0, -50%);
+  animation: balloonsFly 10s infinite ease-in-out;
 }
 .cat-container .balloons {
   position: absolute;
@@ -65,32 +64,32 @@ body {
 .cat-container .balloon:nth-child(1) {
   top: 29%;
   left: 5%;
-  background-color: #ec27d4;
+  background-color: var(--balloon-one);
 }
 .cat-container .balloon:nth-child(2) {
   top: 31%;
   right: 7%;
   transform: rotate(10deg);
-  background-color: #e2c721;
+  background-color: var(--balloon-two);
 }
 .cat-container .balloon:nth-child(3) {
   top: 2%;
   right: 12%;
   transform: rotate(0deg);
-  background-color: #11a7ff;
+  background-color: var(--balloon-three);
   z-index: 2;
 }
 .cat-container .balloon:nth-child(4) {
   top: 4%;
   left: 10%;
   transform: rotate(-4deg);
-  background-color: #3b29e1;
+  background-color: var(--balloon-four);
   z-index: 2;
 }
 .cat-container .balloon__line {
   width: calc(2 * var(--unit));
   bottom: 25%;
-  background-color: #ff00cd;
+  background-color: var(--line);
   position: absolute;
   transform-origin: 50% 100%;
 }
@@ -144,27 +143,29 @@ body {
   background-color: white;
   position: absolute;
   top: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .cat-container .cat__eye::after {
   content: "";
   position: absolute;
-  width: 30%;
-  height: 30%;
-  background-color: black;
+  width: 20%;
+  height: 20%;
+  background-color: var(--cat-body);
   border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: eyeRoll 10s linear infinite;
 }
 .cat-container .cat__eye::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 50%;
-  background-color: black;
+  background-color: var(--cat-body);
   border-radius: 50% 50% 0 0;
   top: 0;
-  visibility: hidden;
+  opacity: 0;
+  animation: eyeBlink 10s linear infinite;
 }
 .cat-container .cat__eye--left {
   left: 17%;
@@ -177,7 +178,7 @@ body {
   height: 37%;
   border-radius: 48%;
   position: absolute;
-  background-color: black;
+  background-color: var(--cat-body);
   top: 23%;
   left: -1%;
 }
@@ -186,13 +187,13 @@ body {
   position: absolute;
   left: 0;
   top: -9%;
-  background-color: black;
+  background-color: var(--cat-body);
   height: 55%;
   width: 26%;
   clip-path: polygon(0 0, 100% 35%, 0 100%);
 }
 .cat-container .cat__belly {
-  background-color: black;
+  background-color: var(--cat-body);
   width: 93%;
   height: 80%;
   border-radius: 50%;
@@ -210,7 +211,7 @@ body {
 .cat-container .cat__leg {
   width: 12%;
   height: 80%;
-  background-color: black;
+  background-color: var(--cat-body);
   position: absolute;
   border-radius: 0 0 50% 50%/0 0 20% 20%;
 }
@@ -234,11 +235,59 @@ body {
   width: 8%;
   height: 57%;
   right: 2%;
-  background-color: black;
+  background-color: var(--cat-body);
   bottom: 3%;
   position: absolute;
   border-radius: 0 0 50% 50%/0 0 5% 5%;
-  transform: rotate(-1deg);
+  transform: rotate(-2deg);
+  animation: tailWave 10s ease infinite;
+}
+
+@keyframes balloonsFly {
+  0% {
+    transform: translate(0, 80%) rotate(3deg);
+  }
+  50% {
+    transform: translate(0, -50%);
+  }
+  100% {
+    transform: translate(0, -190%);
+  }
+}
+@keyframes eyeBlink {
+  0%, 35%, 50%, 100% {
+    opacity: 0%;
+  }
+  40%, 49% {
+    opacity: 100%;
+  }
+}
+@keyframes eyeRoll {
+  0%, 70%, 90% {
+    top: 15%;
+    width: 20%;
+    height: 20%;
+  }
+  20% {
+    top: 70%;
+    left: 80%;
+  }
+  50% {
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 30%;
+  }
+}
+@keyframes tailWave {
+  0%, 50%, 80% {
+    transform: rotate(-2deg);
+    right: 2%;
+  }
+  60% {
+    transform: rotate(6deg);
+    right: 6%;
+  }
 }
 
 /*# sourceMappingURL=balloon-cat.css.map */
